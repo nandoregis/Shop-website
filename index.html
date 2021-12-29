@@ -1,0 +1,178 @@
+<!--shop
+My Account
+Search
+WOMEN
+MEN
+SHOES
+BRAND
+BRAND SWEATSHIRT
+$1000
+PREV
+NEXT
+ADD TO CART-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" 
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Shop-website-master</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+           <div class="box-btn-shop">
+               <a id="btn-shop" href="#">SHOP</a>
+           </div>
+            <nav class="desktop">
+                <ul>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-bag"></i></a></li>
+                    <li><a href="#"><i class="fas fa-align-right"></i></a></li>
+                </ul>
+            </nav><!--desktop-->
+            <div class="clear"></div>
+
+        </div><!--container-->
+        
+    </header>
+
+    <section class="main">
+        <div class="container">
+
+            <div class="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="#">WOMEN</a></li>
+                        <li><a href="#">MEN</a></li>
+                        <li><a href="#">SHOES</a></li>
+                        <li><a style="color: #e67e34;" href="#">BRAND</a></li>
+                    </ul>
+                </nav>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div><!--sidebar-->
+
+            <div class="content">
+                <div class="content_single">
+                    <h2>BRAND<br> SWEATSHIRT</h2>
+                    <p>$1000</p>
+                    <a id="btn-prev" href="#">
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <span>PREV</span>
+                    </a><!--btn-prev-->
+                </div><!--content_single-->
+    
+                <div class="content_single">
+    
+                    <a id="btn-next" href="#">
+                        <span>NEXT</span>
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                        
+                    </a><!--btn-prev-->
+                    
+                    <div class="tamanho-produto">
+                        <p class="bord-gray" >S </p>
+                        <p class="bord-gray" >M </p>
+                        <p class="bord-gray" >L </p>
+                    </div><!--TAMANHO-PRODUTO-->
+    
+                    <div class="box-input">
+                        <div id="input">
+                            <p>0</p>
+                            <a href="#" id="btn-menos">-</a>
+                            <a href="#" id="btn-mais">+</a>
+                        </div>
+                    </div>
+    
+                    <div class="btn-add-card">
+                        <a href="#" id="addCart" >ADD TO CART</a>
+                    </div><!--btn-add-card-->
+    
+                </div><!--content_single-->
+                <div class="clear"></div>
+            </div><!--content-->
+            
+        </div><!--container-->
+    </section><!--main-->
+
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function campoInput() {
+
+            var btnMenos = document.getElementById('btn-menos');
+            var btnMais = document.getElementById('btn-mais');
+            var meuValorP = document.querySelector('#input p');
+            var meuTamanho = document.querySelectorAll('.tamanho-produto p');
+            var contador = 0;
+            
+    
+            btnMenos.addEventListener('click', ()=> {
+                
+                if(meuValorP.innerHTML == '0') {
+                    meuValorP.innerHTML = '0';
+                }else {
+                    contador--;
+                    meuValorP.innerHTML = contador;
+                }
+    
+            });
+    
+            btnMais.addEventListener('click', ()=> {
+                contador++;
+                meuValorP.innerHTML = contador;
+            });
+
+            function ativarBorder() {
+                let opcTam ;
+
+                for(let i = 0; i < meuTamanho.length; i++) {
+                    console.log(meuTamanho[i]);
+
+                    meuTamanho[i].addEventListener('click', ()=> {
+                        
+                        opcTam = meuTamanho[i].innerHTML;
+                        
+                        if(meuTamanho[i].classList == 'bord-orange') {
+                            meuTamanho[i].classList.add('bord-gray');
+                            meuTamanho[i].classList.remove('bord-orange');
+                        }else {
+                            meuTamanho[i].classList.add('bord-orange');
+                            meuTamanho[i].classList.remove('bord-gray');
+                            
+                        }
+
+                        
+                    });
+                    
+                }// for
+
+                document.getElementById('addCart').onclick = function() {
+                    alert('Tamanho: '+ opcTam + 'Quantidade: ' + meuValorP.innerHTML);
+                };
+            };
+            
+            
+
+            ativarBorder();
+        }; // verificar campoInput
+
+        campoInput();
+
+
+    </script>
+</body>
+</html>
